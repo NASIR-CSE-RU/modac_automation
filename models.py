@@ -12,13 +12,14 @@ class RegisterRow(BaseModel):
     departureDate: str = Field(..., description="YYYY-MM-DD or accepted site format")
     arrivalDate: str = Field(..., description="YYYY-MM-DD or accepted site format")
     arrivalMode: str = "Air"
+    accommodationPostcode: str = None
+    stateCode: str = None
+    cityCode: str = None
     flightNo: Optional[str] = None
     departureCountry: Optional[str] = None
-    arrivalPoint: Optional[str] = None
     phone: Optional[str] = None
     email: Optional[EmailStr] = None
     addressInMalaysia: Optional[str] = None
-    purposeOfVisit: Optional[str] = "Tourism"
 
 class PinRow(BaseModel):
     passport: str
