@@ -1,0 +1,21 @@
+services:
+  mdac:
+    build: .
+    image: mdac-fastapi:latest
+    container_name: mdac
+    ports:
+      - "8072:8072"
+    shm_size: "1g"               # more shared memory for Chromium
+    environment:
+      - HEADLESS=0
+      - PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+      - LOG_NETWORK=1
+      - RECORD_TRACE=1
+      - GATE_WAIT_SECONDS=60
+    volumes:
+      - ./:/app
+      - ./downloads:/app/downloads
+      - ./videos:/app/videos
+    working_dir: /app
+    #command: uvicorn main:app --host 0.0.0.0 --port 8072 --reload
+    restart: unless-stopped
